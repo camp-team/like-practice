@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "like-practice-e7591": {
+      "hosting": {
+        "like-practice": [
+          "like-practice-e7591"
+        ]
+      }
+    }
+  }
+}

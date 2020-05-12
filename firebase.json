@@ -1,0 +1,15 @@
+{
+  "hosting": [
+    {
+      "target": "like-practice",
+      "public": "dist/like-practice",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
