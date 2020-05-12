@@ -12,6 +12,7 @@ export const environment = {
     storageBucket: 'like-practice-e7591.appspot.com',
     messagingSenderId: '130227288185',
     appId: '1:130227288185:web:754ee16b08fd28228bbca8',
+    measurementId: 'G-8G2HD8NK3N',
   },
 };
 
