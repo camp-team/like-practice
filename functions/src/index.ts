@@ -1,1 +1,1 @@
-export { addRecord } from './algolia';
+export { addRecord } from './algolia.function';
