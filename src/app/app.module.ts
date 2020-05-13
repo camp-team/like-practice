@@ -6,14 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import {
-  AngularFireFunctions,
-  AngularFireFunctionsModule,
-} from '@angular/fire/functions';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { environment } from '../environments/environment';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { NgAisModule } from 'angular-instantsearch';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,12 +19,14 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    NgAisModule.forRoot(),
     BrowserAnimationsModule,
     AngularFireModule,
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireFunctionsModule,
     AngularFireAuthModule,
+    NgAisModule,
   ],
   providers: [
     {

@@ -25,5 +25,3 @@ export const addRecord = functions
     };
     return index.saveObject(value);
   });
-
-export const console = functions.firestore.document('');
