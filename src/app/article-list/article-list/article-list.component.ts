@@ -38,12 +38,13 @@ export class ArticleListComponent implements OnInit {
     });
   }
 
-  visiable: boolean = true;
+  visiable: boolean;
   moreSearch() {
+    this.visiable = true;
     this.saerchSetting.page++;
     this.index.search(this.saerchSetting).then((res) => {
       this.list = this.list.concat(res.hits);
-      this.visiable = res.hits.length ? true : false;
+      this.visiable = false;
     });
   }
 
