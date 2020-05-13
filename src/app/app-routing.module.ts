@@ -8,6 +8,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./editor/editor.module').then((m) => m.EditorModule),
   },
+  {
+    path: 'list',
+    loadChildren: () =>
+      import('./article-list/article-list.module').then(
+        (m) => m.ArticleListModule
+      ),
+  },
 ];
 
 @NgModule({
