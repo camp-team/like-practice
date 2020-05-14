@@ -28,18 +28,26 @@ export class ArticleListComponent implements OnInit {
     hitsPerPage: 10,
   };
 
+  likeState = {};
+
   index = searchClient.initIndex('articles');
 
   list: Article[];
+  likedArticleIds: string[];
 
   constructor(private articleService: ArtileService) {
     this.index.search(this.saerchSetting).then((res) => {
       this.list = res.hits;
     });
+
+    this.articleService.getLikedArticleIds('AAA').then((res) => {
+      this.likedArticleIds = res;
+    });
   }
 
   visiable: boolean;
   canLoading: boolean = true;
+
   moreSearch() {
     this.visiable = true;
     this.saerchSetting.page++;
@@ -50,5 +58,31 @@ export class ArticleListComponent implements OnInit {
     });
   }
 
+  isLiked(articleId: string): boolean {
+    if (this.likeState[articleId]) {
+      return this.likeState[articleId].isLieked;
+    } else {
+      return this.likedArticleIds?.includes(articleId);
+    }
+  }
+
+  like(articleId: string): Promise<void> {
+    console.log(articleId);
+    const index = this.list.findIndex((item) => item.id === articleId);
+    this.list[index].likeCount++;
+    this.likeState[articleId] = {
+      isLieked: true,
+    };
+    return this.articleService.likeArticle(articleId, 'AAA');
+  }
+
+  unLike(articleId: string): Promise<void> {
+    const index = this.list.findIndex((item) => item.id === articleId);
+    this.list[index].likeCount--;
+    this.likeState[articleId] = {
+      isLieked: false,
+    };
+    return this.articleService.unLikeArticle(articleId, 'AAA');
+  }
   ngOnInit(): void {}
 }

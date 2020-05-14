@@ -4,6 +4,10 @@
     {{ i + 1 }}
     {{ item.title }}
     {{ item.body }}
+    {{ item.id }}
+    {{ "いいね" + item.likeCount }}
+    <button *ngIf="!isLiked(item.id)" (click)="like(item.id)">いいね！</button>
+    <button *ngIf="isLiked(item.id)" (click)="unLike(item.id)">やめる</button>
   </li>
 </ul>
 <div *ngIf="canLoading" class="checkpoint" appVisible (visible)="moreSearch()">
