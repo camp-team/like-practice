@@ -6,6 +6,7 @@ import { Article } from 'src/app/interfaces/article';
 import * as algoliasearch from 'algoliasearch/lite';
 import { QueryParameters } from 'algoliasearch';
 
+const USER_ID = 'CCC';
 const searchClient = algoliasearch(
   'AANOJQAMD9',
   'c23c437eaefd2e85366dc5afecdd5af6'
@@ -40,7 +41,7 @@ export class ArticleListComponent implements OnInit {
       this.list = res.hits;
     });
 
-    this.articleService.getLikedArticleIds('AAA').then((res) => {
+    this.articleService.getLikedArticleIds(USER_ID).then((res) => {
       this.likedArticleIds = res;
     });
   }
@@ -73,7 +74,7 @@ export class ArticleListComponent implements OnInit {
     this.likeState[articleId] = {
       isLieked: true,
     };
-    return this.articleService.likeArticle(articleId, 'AAA');
+    return this.articleService.likeArticle(articleId, USER_ID);
   }
 
   unLike(articleId: string): Promise<void> {
@@ -82,7 +83,7 @@ export class ArticleListComponent implements OnInit {
     this.likeState[articleId] = {
       isLieked: false,
     };
-    return this.articleService.unLikeArticle(articleId, 'AAA');
+    return this.articleService.unLikeArticle(articleId, USER_ID);
   }
   ngOnInit(): void {}
 }
