@@ -25,3 +25,35 @@ export const addRecord = functions
     };
     return index.saveObject(value);
   });
+
+export const updateRecord = functions
+  .region('asia-northeast1')
+  .firestore.document('articles/{id}')
+  .onUpdate((snap, context) => {
+    const data = snap.after.data() as {
+      id: string;
+      title: string;
+      body: string;
+      public: boolean;
+      createdAt: admin.firestore.Timestamp;
+    };
+    const value = {
+      ...data,
+      objectID: data.id,
+    };
+    return index.saveObject(value);
+  });
+
+export const deleteRecord = functions
+  .region('asia-northeast1')
+  .firestore.document('articles/{id}')
+  .onDelete((snap, context) => {
+    const data = snap.data() as {
+      id: string;
+      title: string;
+      body: string;
+      public: boolean;
+      createdAt: admin.firestore.Timestamp;
+    };
+    return index.deleteObject(data.id);
+  });
