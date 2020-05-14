@@ -6,5 +6,7 @@
     {{ item.body }}
   </li>
 </ul>
-<mat-spinner *ngIf="visiable"></mat-spinner>
-<div class="checkpoint" appVisible (visible)="moreSearch()">checkpont</div>
+<div *ngIf="canLoading" class="checkpoint" appVisible (visible)="moreSearch()">
+  checkpoint
+  <mat-spinner *ngIf="visiable"></mat-spinner>
+</div>

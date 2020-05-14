@@ -39,12 +39,14 @@ export class ArticleListComponent implements OnInit {
   }
 
   visiable: boolean;
+  canLoading: boolean = true;
   moreSearch() {
     this.visiable = true;
     this.saerchSetting.page++;
     this.index.search(this.saerchSetting).then((res) => {
       this.list = this.list.concat(res.hits);
       this.visiable = false;
+      this.canLoading = !!res.hits.length;
     });
   }
 
